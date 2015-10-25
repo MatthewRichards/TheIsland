@@ -1,14 +1,17 @@
-﻿using Island.Models;
+﻿using System.Drawing;
+using Island.Models;
 
 namespace Island.Actors
 {
-  public class Entity
+  public abstract class Entity
   {
-    public Entity(Location initialLocation)
+    protected Entity(Location initialLocation)
     {
       Location = initialLocation;
     }
 
     public Location Location { get; protected set; }
+
+    public abstract void Draw(Graphics graphics, float x, float y, float width, float height);
   }
 }

@@ -2,9 +2,9 @@
 
 namespace Island.Actors
 {
-  public class Content : Entity
+  public abstract class Content : Entity
   {
-    public Content(Location initialLocation) : base(initialLocation)
+    protected Content(Location initialLocation) : base(initialLocation)
     {
     }
   }

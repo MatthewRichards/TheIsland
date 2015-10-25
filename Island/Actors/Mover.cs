@@ -2,9 +2,9 @@
 
 namespace Island.Actors
 {
-  public class Mover : Content
+  public abstract class Mover : Content
   {
-    public Mover(Location initialLocation) : base(initialLocation)
+    protected Mover(Location initialLocation) : base(initialLocation)
     {
     }
 

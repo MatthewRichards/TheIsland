@@ -23,7 +23,9 @@ namespace Island
 
     private static World CreateWorld()
     {
-      // Create landscape
+      Random random = new Random();
+      List<Content> content = new List<Content>();
+
       var islandInAscii = @"
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 WWWWWWWWWPPPPPPPPPPPPPPPWWWWWWWWWW
@@ -46,15 +48,25 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
       {
         for (int j = 0; j < landscapeArray[0].Length; j++)
         {
-          landscape[j, i] = landscapeArray[i][j] == 'W'
-            ? (Landscape)new Water(new Location(i, j))
-            : new Plain(new Location(i, j));
+          var location = new Location(j, i);
+
+          switch (landscapeArray[i][j])
+          {
+            case 'W':
+              landscape[j, i] = new Water(location);
+              break;
+
+            case 'P':
+              landscape[j, i] = new Plain(location);
+              if (random.Next(0, 2) == 0)
+              {
+                content.Add(new Forest(location));
+              }
+              break;
+          }
         }
       }
-
-      // Create content
-      List<Content> content = new List<Content>();
-
+      
       return new World(landscape, content);
     }
 
