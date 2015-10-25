@@ -46,14 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Actors\Content.cs" />
+    <Compile Include="Actors\Entity.cs" />
+    <Compile Include="Actors\Forest.cs" />
+    <Compile Include="Actors\Mountain.cs" />
+    <Compile Include="Actors\Plain.cs" />
+    <Compile Include="Actors\Landscape.cs" />
+    <Compile Include="Actors\Mover.cs" />
+    <Compile Include="Actors\Person.cs" />
+    <Compile Include="Actors\Water.cs" />
+    <Compile Include="Behaviours\Activity.cs" />
+    <Compile Include="Behaviours\Behaviour.cs" />
+    <Compile Include="Behaviours\Delays.cs" />
+    <Compile Include="Island.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Island.Designer.cs">
+      <DependentUpon>Island.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\IWorld.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\World.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Island.resx">
+      <DependentUpon>Island.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +94,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

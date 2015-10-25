@@ -7,14 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Island.Models;
 
 namespace Island
 {
-  public partial class Form1 : Form
+  public partial class Island : Form
   {
-    public Form1()
+    private World world;
+
+    public Island(World world)
     {
       InitializeComponent();
+
+      this.world = world;
+    }
+
+    private void WorldImage_Paint(object sender, PaintEventArgs e)
+    {
+      world.Draw(e.Graphics, WorldImage.ClientSize);
     }
   }
 }
