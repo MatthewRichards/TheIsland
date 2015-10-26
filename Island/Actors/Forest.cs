@@ -9,7 +9,6 @@ namespace Island.Actors
   public class Forest : Content
   {
     private int trees;
-    private static readonly Random Random = new Random();
 
     public Forest(Location location) : base(location)
     {

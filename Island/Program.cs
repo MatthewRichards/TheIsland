@@ -66,6 +66,8 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
           }
         }
       }
+
+      content.Add(new Person(new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
       
       return new World(landscape, content);
     }

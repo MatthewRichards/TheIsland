@@ -13,7 +13,8 @@ namespace Island
 {
   public partial class Island : Form
   {
-    private World world;
+    private readonly World world;
+    private int time = 0;
 
     public Island(World world)
     {
@@ -31,6 +32,8 @@ namespace Island
     {
       world.ClockTick();
       WorldImage.Invalidate();
+      time++;
+      TimeLabel.Text = $"Time: {time}";
     }
   }
 }
