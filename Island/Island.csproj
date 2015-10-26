@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\Content.cs" />
-    <Compile Include="Actors\Entity.cs" />
+    <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\Forest.cs" />
+    <Compile Include="Actors\IActor.cs" />
     <Compile Include="Actors\Mountain.cs" />
     <Compile Include="Actors\Plain.cs" />
     <Compile Include="Actors\Landscape.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Island.Designer.cs">
       <DependentUpon>Island.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActorWithBehaviour.cs" />
     <Compile Include="Models\IWorld.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\World.cs" />

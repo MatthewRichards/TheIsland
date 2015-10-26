@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using Island.Behaviours;
 using Island.Models;
 
 namespace Island.Actors
@@ -14,7 +15,7 @@ namespace Island.Actors
       throw new System.NotImplementedException();
     }
 
-    public override void Behave(IWorld state)
+    public override Behaviour GetInitialBehaviour()
     {
       throw new System.NotImplementedException();
     }

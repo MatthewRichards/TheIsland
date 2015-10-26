@@ -2,12 +2,10 @@
 
 namespace Island.Actors
 {
-  public abstract class Content : Entity
+  public abstract class Content : Actor
   {
     protected Content(Location initialLocation) : base(initialLocation)
     {
     }
-
-    public abstract void Behave(IWorld state);
   }
 }
