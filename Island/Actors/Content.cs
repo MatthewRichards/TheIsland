@@ -7,5 +7,7 @@ namespace Island.Actors
     protected Content(Location initialLocation) : base(initialLocation)
     {
     }
+
+    public abstract void Behave(IWorld state);
   }
 }

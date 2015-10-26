@@ -57,7 +57,8 @@
     <Compile Include="Actors\Water.cs" />
     <Compile Include="Behaviours\Activity.cs" />
     <Compile Include="Behaviours\Behaviour.cs" />
-    <Compile Include="Behaviours\Delays.cs" />
+    <Compile Include="Behaviours\Delay.cs" />
+    <Compile Include="Behaviours\Do.cs" />
     <Compile Include="Island.cs">
       <SubType>Form</SubType>
     </Compile>

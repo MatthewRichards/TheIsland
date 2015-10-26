@@ -13,5 +13,10 @@ namespace Island.Actors
     {
       throw new System.NotImplementedException();
     }
+
+    public override void Behave(IWorld state)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

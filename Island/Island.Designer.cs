@@ -28,7 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       this.WorldImage = new System.Windows.Forms.PictureBox();
+      this.Clock = new System.Windows.Forms.Timer(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.WorldImage)).BeginInit();
       this.SuspendLayout();
       // 
@@ -41,6 +43,11 @@
       this.WorldImage.TabIndex = 0;
       this.WorldImage.TabStop = false;
       this.WorldImage.Paint += new System.Windows.Forms.PaintEventHandler(this.WorldImage_Paint);
+      // 
+      // Clock
+      // 
+      this.Clock.Enabled = true;
+      this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
       // 
       // Island
       // 
@@ -58,6 +65,7 @@
     #endregion
 
     private System.Windows.Forms.PictureBox WorldImage;
+    private System.Windows.Forms.Timer Clock;
   }
 }
 

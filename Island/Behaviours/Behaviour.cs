@@ -12,6 +12,11 @@ namespace Island.Behaviours
       this.behaviour = behaviour;
     }
 
+    public Tuple<Activity, Behaviour> Invoke(IWorld state)
+    {
+      return behaviour(state);
+    }
+
     public static implicit operator Behaviour(Func<IWorld, Tuple<Activity, Behaviour>> behaviour)
     {
       return new Behaviour(behaviour);

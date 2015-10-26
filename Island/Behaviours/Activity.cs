@@ -12,6 +12,11 @@ namespace Island.Behaviours
       this.activity = activity;
     }
 
+    public void Act(IWorld state)
+    {
+      activity(state);
+    }
+
     public static Activity None = new Activity(world => { });
   }
 }

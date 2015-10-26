@@ -26,5 +26,11 @@ namespace Island
     {
       world.Draw(e.Graphics, WorldImage.ClientSize);
     }
+
+    private void Clock_Tick(object sender, EventArgs e)
+    {
+      world.ClockTick();
+      WorldImage.Invalidate();
+    }
   }
 }

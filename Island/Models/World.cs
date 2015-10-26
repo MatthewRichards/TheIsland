@@ -33,5 +33,13 @@ namespace Island.Models
 
       content.ForEach(c => c.Draw(graphics, c.Location.X*cellWidth, c.Location.Y*cellHeight, cellWidth, cellHeight));
     }
+
+    internal void ClockTick()
+    {
+      foreach (var item in content)
+      {
+        item.Behave(null);
+      }
+    }
   }
 }
