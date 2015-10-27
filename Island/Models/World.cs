@@ -6,7 +6,7 @@ using Island.Actors;
 
 namespace Island.Models
 {
-  public class World
+  public class World : IWorld
   {
     private readonly Landscape[,] landscape;
     private readonly List<ActorWithBehaviour> content;
@@ -39,8 +39,13 @@ namespace Island.Models
     {
       foreach (var item in content)
       {
-        item.Behave(null);
+        item.Behave(this);
       }
+    }
+
+    public bool IsAccessibleTo(Location location, Actor actor)
+    {
+      return landscape[location.X, location.Y].IsAccessibleTo(actor);
     }
   }
 }

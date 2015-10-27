@@ -29,7 +29,11 @@ namespace Island.Activities
         throw new Exception("Cannot move a " + actor.GetType());
       }
 
-      mover.MoveTo(mover.Location.Offset(x, y));
+      var newLocation = mover.Location.Offset(x, y);
+      if (world.IsAccessibleTo(newLocation, actor))
+      {
+        mover.MoveTo(newLocation);
+      }
     }
   }
 }

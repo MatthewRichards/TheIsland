@@ -8,5 +8,10 @@ namespace Island.Actors
     public Mountain(Location location) : base(location, Color.Chocolate)
     {
     }
+
+    public override bool IsAccessibleTo(Actor actor)
+    {
+      return true;
+    }
   }
 }

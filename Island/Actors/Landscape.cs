@@ -22,5 +22,7 @@ namespace Island.Actors
     {
       throw new System.NotImplementedException("TODO: Not sure whether landscape has behaviour yet. Rejig things a bit if not.");
     }
+
+    public abstract bool IsAccessibleTo(Actor actor);
   }
 }

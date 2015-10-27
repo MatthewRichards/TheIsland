@@ -8,5 +8,10 @@ namespace Island.Actors
     public Plain(Location location) : base(location, Color.Bisque)
     {
     }
+
+    public override bool IsAccessibleTo(Actor actor)
+    {
+      return true;
+    }
   }
 }
