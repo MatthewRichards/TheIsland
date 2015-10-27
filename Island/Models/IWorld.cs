@@ -5,5 +5,6 @@ namespace Island.Models
   public interface IWorld
   {
     bool IsAccessibleTo(Location location, Actor actor);
+    int HarvestAt(Location location);
   }
 }

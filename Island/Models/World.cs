@@ -47,5 +47,15 @@ namespace Island.Models
     {
       return landscape[location.X, location.Y].IsAccessibleTo(actor);
     }
+
+    public int HarvestAt(Location location)
+    {
+      var forest = content.Where(c => c.Location.Equals(location)).Select(c => c.Actor).OfType<Forest>().FirstOrDefault();
+
+      if (forest == null) return 0;
+
+      var harvestAmount = 20;
+      return forest.Deplete(harvestAmount);
+    }
   }
 }

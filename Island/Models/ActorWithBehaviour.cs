@@ -22,7 +22,11 @@ namespace Island.Models
       behaviour = nowAndNext.Item2;
     }
 
+    
+
     public Location Location => actor.Location;
+
+    public Actor Actor => actor;
 
     public void Draw(Graphics graphics, float x, float y, float width, float height)
     {

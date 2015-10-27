@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\Harvest.cs" />
     <Compile Include="Actors\Content.cs" />
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\Forest.cs" />
