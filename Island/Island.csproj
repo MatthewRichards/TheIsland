@@ -56,10 +56,12 @@
     <Compile Include="Actors\Mover.cs" />
     <Compile Include="Actors\Person.cs" />
     <Compile Include="Actors\Water.cs" />
-    <Compile Include="Behaviours\Activity.cs" />
+    <Compile Include="Activities\Activity.cs" />
     <Compile Include="Behaviours\Behaviour.cs" />
+    <Compile Include="Activities\CustomActivity.cs" />
     <Compile Include="Behaviours\Delay.cs" />
     <Compile Include="Behaviours\Do.cs" />
+    <Compile Include="Activities\Move.cs" />
     <Compile Include="Island.cs">
       <SubType>Form</SubType>
     </Compile>

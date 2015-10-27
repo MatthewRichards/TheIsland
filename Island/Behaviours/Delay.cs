@@ -1,4 +1,5 @@
 ﻿using System;
+using Island.Activities;
 
 namespace Island.Behaviours
 {
@@ -11,7 +12,7 @@ namespace Island.Behaviours
         return thenDoThis();
       }
 
-      return new Behaviour(state => Tuple.Create(Activity.None, For(years - 1, thenDoThis)));
+      return Activity.None.Then(() => For(years - 1, thenDoThis));
     }
   }
 }

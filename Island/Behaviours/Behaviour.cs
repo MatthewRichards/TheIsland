@@ -1,11 +1,12 @@
 ﻿using System;
+using Island.Activities;
 using Island.Models;
 
 namespace Island.Behaviours
 {
   public class Behaviour
   {
-    private Func<IWorld, Tuple<Activity, Behaviour>> behaviour;
+    private readonly Func<IWorld, Tuple<Activity, Behaviour>> behaviour;
 
     public Behaviour(Func<IWorld, Tuple<Activity, Behaviour>> behaviour)
     {

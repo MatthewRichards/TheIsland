@@ -18,7 +18,7 @@ namespace Island.Models
     public void Behave(IWorld state)
     {
       var nowAndNext = behaviour.Invoke(state);
-      nowAndNext.Item1.Act(state);
+      nowAndNext.Item1.Act(actor, state);
       behaviour = nowAndNext.Item2;
     }
 

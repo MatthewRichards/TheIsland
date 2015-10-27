@@ -11,5 +11,10 @@
     public int X { get; }
 
     public int Y { get; }
+
+    public Location Offset(int dx, int dy)
+    {
+      return new Location(X + dx, Y + dy);
+    }
   }
 }

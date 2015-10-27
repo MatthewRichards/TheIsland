@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using Island.Activities;
 using Island.Behaviours;
 using Island.Models;
 
@@ -17,7 +18,7 @@ namespace Island.Actors
 
     public override Behaviour GetInitialBehaviour()
     {
-      Activity grow = new Activity(state => trees += 10);
+      Activity grow = new CustomActivity((actor, state) => trees += 10);
       Behaviour growth = Delay.For(Random.Next(0, 100), () => Do.Activity(grow, GetInitialBehaviour));
       return growth;
     }

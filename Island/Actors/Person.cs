@@ -1,5 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
+using Island.Activities;
 using Island.Behaviours;
 using Island.Models;
 
@@ -18,9 +18,7 @@ namespace Island.Actors
 
     public override Behaviour GetInitialBehaviour()
     {
-      var movement = new Activity(state => Move(new Location(Location.X + Random.Next(-1, 2), Location.Y + Random.Next(-1, 2))));
-
-      return Do.Activity(movement, GetInitialBehaviour);
+      return Move.By(Random.Next(-1, 2), Random.Next(-1, 2)).Then(GetInitialBehaviour);
     }
   }
 }

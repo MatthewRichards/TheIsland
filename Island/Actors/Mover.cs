@@ -8,7 +8,7 @@ namespace Island.Actors
     {
     }
 
-    public void Move(Location newLocation)
+    public void MoveTo(Location newLocation)
     {
       Location = newLocation;
     }
