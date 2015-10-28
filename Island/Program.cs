@@ -25,7 +25,7 @@ namespace Island
     private static World CreateWorld()
     {
       Random random = new Random();
-      var content = new List<ActorWithBehaviour>();
+      var content = new List<ActorWithLocationAndBehaviour>();
 
       var islandInAscii = @"
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
@@ -64,7 +64,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
         }
       }
 
-      content.Add(new ActorWithBehaviour(new Person(), new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
+      content.Add(new ActorWithLocationAndBehaviour(new Person(), new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
       
       return new World(landscape, content);
     }

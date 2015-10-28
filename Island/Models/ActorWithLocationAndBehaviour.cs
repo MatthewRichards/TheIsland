@@ -4,13 +4,13 @@ using Island.Behaviours;
 
 namespace Island.Models
 {
-  public class ActorWithBehaviour
+  public class ActorWithLocationAndBehaviour
   {
     private readonly Actor actor;
     private Location location;
     private Behaviour behaviour;
 
-    public ActorWithBehaviour(Actor actor, Location location)
+    public ActorWithLocationAndBehaviour(Actor actor, Location location)
     {
       this.actor = actor;
       this.location = location;

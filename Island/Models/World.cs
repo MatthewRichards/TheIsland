@@ -13,9 +13,9 @@ namespace Island.Models
   public class World : IWorld
   {
     private readonly Landscape[,] landscape;
-    private readonly List<ActorWithBehaviour> content;
+    private readonly List<ActorWithLocationAndBehaviour> content;
 
-    public World(Landscape[,] landscape, List<ActorWithBehaviour> content)
+    public World(Landscape[,] landscape, List<ActorWithLocationAndBehaviour> content)
     {
       this.landscape = landscape;
       this.content = content;
