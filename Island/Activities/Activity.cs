@@ -7,7 +7,7 @@ namespace Island.Activities
 {
   public abstract class Activity
   {
-    public abstract void Act(Actor actor, IWorld state);
+    public abstract void Act(Actor actor, WorldView state);
 
     public Behaviour Then(Func<Behaviour> nextBehaviour)
     {
@@ -18,7 +18,7 @@ namespace Island.Activities
 
     private class DoNothing : Activity
     {
-      public override void Act(Actor actor, IWorld state)
+      public override void Act(Actor actor, WorldView state)
       {
       }
     }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using Island.Actors;
 using Island.Behaviours;
+using Island.Landscapes;
+using Island.Resources;
 
 namespace Island.Models
 {
@@ -13,10 +15,10 @@ namespace Island.Models
     private readonly Landscape[,] landscape;
     private readonly List<ActorWithBehaviour> content;
 
-    public World(Landscape[,] landscape, List<Content> content)
+    public World(Landscape[,] landscape, List<ActorWithBehaviour> content)
     {
       this.landscape = landscape;
-      this.content = content.Select(c => new ActorWithBehaviour(c)).ToList();
+      this.content = content;
     }
 
     internal void Draw(Graphics graphics, Size imageSize)
@@ -62,7 +64,7 @@ namespace Island.Models
       if (forest == null) return 0;
 
       var harvestAmount = 20;
-      return forest.Deplete(harvestAmount);
+      return forest.Deplete<Wood>(harvestAmount);
     }
   }
 }

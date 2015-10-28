@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Island.Actors;
+using Island.Landscapes;
 using Island.Models;
 
 namespace Island
@@ -24,7 +25,7 @@ namespace Island
     private static World CreateWorld()
     {
       Random random = new Random();
-      List<Content> content = new List<Content>();
+      var content = new List<ActorWithBehaviour>();
 
       var islandInAscii = @"
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
@@ -53,17 +54,17 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
           switch (landscapeArray[i][j])
           {
             case 'W':
-              landscape[j, i] = new Water(location);
+              landscape[j, i] = new Water();
               break;
 
             case 'P':
-              landscape[j, i] = new Plain(location);
+              landscape[j, i] = new Plain();
               break;
           }
         }
       }
 
-      content.Add(new Person(new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
+      content.Add(new ActorWithBehaviour(new Person(), new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
       
       return new World(landscape, content);
     }

@@ -4,27 +4,29 @@ using Island.Behaviours;
 
 namespace Island.Models
 {
-  public class ActorWithBehaviour : IActor
+  public class ActorWithBehaviour
   {
     private readonly Actor actor;
+    private Location location;
     private Behaviour behaviour;
 
-    public ActorWithBehaviour(Actor actor)
+    public ActorWithBehaviour(Actor actor, Location location)
     {
       this.actor = actor;
+      this.location = location;
       behaviour = actor.GetInitialBehaviour();
     }
 
-    public void Behave(IWorld state)
+    public void Behave(World state)
     {
-      var nowAndNext = behaviour.Invoke(state);
-      nowAndNext.Item1.Act(actor, state);
+      var worldView = new WorldView(state, location);
+      var nowAndNext = behaviour.Invoke(worldView);
+      nowAndNext.Item1.Act(actor, worldView);
       behaviour = nowAndNext.Item2;
+      location = worldView.Location;
     }
 
-    
-
-    public Location Location => actor.Location;
+    public Location Location => location;
 
     public Actor Actor => actor;
 

@@ -6,14 +6,14 @@ namespace Island.Activities
 {
   public class CustomActivity : Activity
   {
-    private readonly Action<Actor, IWorld> activity;
+    private readonly Action<Actor, WorldView> activity;
 
-    public CustomActivity(Action<Actor, IWorld> activity)
+    public CustomActivity(Action<Actor, WorldView> activity)
     {
       this.activity = activity;
     }
     
-    public override void Act(Actor actor, IWorld state)
+    public override void Act(Actor actor, WorldView state)
     {
       activity(actor, state);
     }

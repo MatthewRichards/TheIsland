@@ -5,9 +5,9 @@ namespace Island.Activities
 {
   public class Harvest : Activity
   {
-    public override void Act(Actor actor, IWorld state)
+    public override void Act(Actor actor, WorldView state)
     {
-      int wood = state.HarvestAt(actor.Location);
+      int wood = state.HarvestHere();
       ((Person) actor).AddWood(wood);
     }
   }

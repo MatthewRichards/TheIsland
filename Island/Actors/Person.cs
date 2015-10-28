@@ -10,10 +10,6 @@ namespace Island.Actors
   {
     private int wood;
 
-    public Person(Location initialLocation) : base(initialLocation)
-    {
-    }
-
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
       graphics.FillEllipse(new SolidBrush(Color.FromArgb(255 * (Math.Min(wood, 80) + 20) / 100, Color.Black)), x + width/4, y + height/4, width/2, height/2);

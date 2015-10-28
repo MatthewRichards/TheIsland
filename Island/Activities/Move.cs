@@ -20,7 +20,7 @@ namespace Island.Activities
       return new Move(x, y);
     }
 
-    public override void Act(Actor actor, IWorld world)
+    public override void Act(Actor actor, WorldView world)
     {
       Mover mover = actor as Mover;
 
@@ -29,10 +29,10 @@ namespace Island.Activities
         throw new Exception("Cannot move a " + actor.GetType());
       }
 
-      var newLocation = mover.Location.Offset(x, y);
+      var newLocation = world.Location.Offset(x, y);
       if (world.IsAccessibleTo(newLocation, actor))
       {
-        mover.MoveTo(newLocation);
+        world.MoveTo(newLocation);
       }
     }
   }
