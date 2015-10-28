@@ -10,8 +10,7 @@ namespace Island.Landscapes
   public abstract class Landscape : IDrawable
   {
     protected static readonly Random Random = new Random();
-
-    protected readonly Dictionary<Type, int> resources = new Dictionary<Type, int>(); 
+    protected readonly ResourceStore Resources = new ResourceStore();
     private readonly Color colour;
 
     protected Landscape(Color colour)
@@ -30,10 +29,7 @@ namespace Island.Landscapes
 
     public int Deplete<TResource>(int requestedAmount) where TResource: Resource
     {
-      var currentAmount = resources[typeof (TResource)];
-      var amountToDeplete = Math.Min(requestedAmount, currentAmount);
-      resources[typeof (TResource)] = currentAmount - amountToDeplete;
-      return amountToDeplete;
+      return Resources.Subtract<TResource>(requestedAmount);
     }
   }
 }

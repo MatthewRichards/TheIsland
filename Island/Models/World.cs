@@ -10,7 +10,7 @@ using Island.Resources;
 
 namespace Island.Models
 {
-  public class World : IWorld
+  public class World
   {
     private readonly Landscape[,] landscape;
     private readonly List<ActorWithLocationAndBehaviour> content;
@@ -57,14 +57,10 @@ namespace Island.Models
       return landscape[location.X, location.Y].IsAccessibleTo(actor);
     }
 
-    public int HarvestAt(Location location)
+    public int Harvest<TResource>(Location location) where TResource : Resource
     {
-      var forest = landscape[location.X, location.Y] as Plain;
-
-      if (forest == null) return 0;
-
       var harvestAmount = 20;
-      return forest.Deplete<Wood>(harvestAmount);
+      return landscape[location.X, location.Y].Deplete<TResource>(harvestAmount);
     }
   }
 }

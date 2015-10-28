@@ -3,6 +3,7 @@ using System.Drawing;
 using Island.Activities;
 using Island.Behaviours;
 using Island.Models;
+using Island.Resources;
 
 namespace Island.Actors
 {
@@ -18,7 +19,7 @@ namespace Island.Actors
     public override Behaviour GetInitialBehaviour()
     {
       return Move.By(Random.Next(-1, 2), Random.Next(-1, 2)).Then(() => 
-        new Harvest().Then(GetInitialBehaviour));
+        new Harvest<Wood>().Then(GetInitialBehaviour));
     }
 
     public void AddWood(int amount)
