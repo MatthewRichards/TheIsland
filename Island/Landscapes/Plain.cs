@@ -10,12 +10,18 @@ namespace Island.Landscapes
   {
     public Plain() : base(Color.Bisque)
     {
-      Resources.Set<Wood>(Random.Next(0, 100));
+      if (Random.Next(0, 3) == 0)
+      {
+        Resources.Set<Wood>(Random.Next(0, 100));
+      }
     }
 
     public override void ReplenishResources()
     {
-      Resources.Add<Wood>(1);
+      if (Resources.Get<Wood>() > 0)
+      {
+        Resources.Add<Wood>(1);
+      }
     }
 
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
