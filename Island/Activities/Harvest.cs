@@ -8,8 +8,13 @@ namespace Island.Activities
   {
     public override void Act(Actor actor, WorldView state)
     {
-      int wood = state.Harvest<TResource>();
-      ((Person) actor).AddWood(wood);
+      if (((Person) actor).CanCarry<TResource>() == 0)
+      {
+        return;
+      }
+
+      int amountHarvested = state.Harvest<TResource>();
+      ((Person) actor).Add<TResource>(amountHarvested);
     }
   }
 }
