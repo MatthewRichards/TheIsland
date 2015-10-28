@@ -49,7 +49,6 @@
     <Compile Include="Activities\Harvest.cs" />
     <Compile Include="Actors\Content.cs" />
     <Compile Include="Actors\Actor.cs" />
-    <Compile Include="Actors\Forest.cs" />
     <Compile Include="Actors\IActor.cs" />
     <Compile Include="Actors\Mountain.cs" />
     <Compile Include="Actors\Plain.cs" />

@@ -9,6 +9,10 @@ namespace Island.Actors
     {
     }
 
+    public override void ReplenishResources()
+    {
+    }
+
     public override bool IsAccessibleTo(Actor actor)
     {
       return false;

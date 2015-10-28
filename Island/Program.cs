@@ -58,10 +58,6 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
 
             case 'P':
               landscape[j, i] = new Plain(location);
-              if (random.Next(0, 2) == 0)
-              {
-                content.Add(new Forest(location));
-              }
               break;
           }
         }

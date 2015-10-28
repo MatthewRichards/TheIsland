@@ -13,6 +13,8 @@ namespace Island.Actors
       this.colour = colour;
     }
 
+    public abstract void ReplenishResources();
+
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
       graphics.FillRectangle(new SolidBrush(colour), x, y, width, height);

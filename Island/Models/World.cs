@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using Island.Actors;
+using Island.Behaviours;
 
 namespace Island.Models
 {
@@ -41,6 +43,11 @@ namespace Island.Models
       {
         item.Behave(this);
       }
+
+      foreach (var item in landscape)
+      {
+        item.ReplenishResources();
+      }
     }
 
     public bool IsAccessibleTo(Location location, Actor actor)
@@ -50,7 +57,7 @@ namespace Island.Models
 
     public int HarvestAt(Location location)
     {
-      var forest = content.Where(c => c.Location.Equals(location)).Select(c => c.Actor).OfType<Forest>().FirstOrDefault();
+      var forest = landscape[location.X, location.Y] as Plain;
 
       if (forest == null) return 0;
 
