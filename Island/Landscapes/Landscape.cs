@@ -10,7 +10,8 @@ namespace Island.Landscapes
   public abstract class Landscape : IDrawable
   {
     protected static readonly Random Random = new Random();
-    protected readonly ResourceStore Resources = new ResourceStore();
+    protected readonly ResourceStore NaturalResources = new ResourceStore();
+    protected readonly ResourceStore HarvestedResources = new ResourceStore();
     private readonly Color colour;
 
     protected Landscape(Color colour)
@@ -27,9 +28,15 @@ namespace Island.Landscapes
 
     public abstract bool IsAccessibleTo(Actor actor);
 
-    public int Deplete<TResource>(int requestedAmount) where TResource: Resource
+    public int Harvest<TResource>(int requestedAmount) where TResource : Resource
     {
-      return Resources.Subtract<TResource>(requestedAmount);
+      var harvestedAmount = NaturalResources.Subtract<TResource>(requestedAmount);
+      return HarvestedResources.Add<TResource>(harvestedAmount);
+    }
+
+    public int Collect<TResource>(int requestedAmount) where TResource : Resource
+    {
+      return HarvestedResources.Subtract<TResource>(requestedAmount);
     }
   }
 }

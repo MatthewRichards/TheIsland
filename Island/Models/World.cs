@@ -60,7 +60,12 @@ namespace Island.Models
     public int Harvest<TResource>(Location location) where TResource : Resource
     {
       var harvestAmount = 20;
-      return landscape[location.X, location.Y].Deplete<TResource>(harvestAmount);
+      return landscape[location.X, location.Y].Harvest<TResource>(harvestAmount);
+    }
+
+    public int Collect<TResource>(Location location, int collectAmount) where TResource : Resource
+    {
+      return landscape[location.X, location.Y].Collect<TResource>(collectAmount);
     }
   }
 }
