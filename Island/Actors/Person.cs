@@ -15,13 +15,7 @@ namespace Island.Actors
     {
       graphics.FillEllipse(new SolidBrush(Color.FromArgb(255 * (Math.Min(resources.Get<Wood>(), 80) + 20) / 100, Color.Black)), x + width/4, y + height/4, width/2, height/2);
     }
-
-    public override Behaviour GetInitialBehaviour()
-    {
-      return Move.By(Random.Next(-1, 2), Random.Next(-1, 2)).Then(() => 
-        new Harvest<Wood>().Then(GetInitialBehaviour));
-    }
-
+    
     public int Add<TResource>(int amount) where TResource : Resource
     {
       return resources.Add<TResource>(amount);
@@ -30,6 +24,11 @@ namespace Island.Actors
     public int CanCarry<TResource>() where TResource : Resource
     {
       return resources.SpareCapacity<TResource>();
+    }
+
+    public int Carrying<TResource>() where TResource : Resource
+    {
+      return resources.Get<TResource>();
     }
   }
 }

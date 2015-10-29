@@ -18,7 +18,7 @@ namespace Island.Landscapes
 
     public override void ReplenishResources()
     {
-      if (NaturalResources.Get<Wood>() > 0)
+      if (NaturalResources.Get<Wood>() > 0 && Random.Next(0, 100) == 0)
       {
         NaturalResources.Add<Wood>(1);
       }
@@ -26,7 +26,7 @@ namespace Island.Landscapes
 
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
-      graphics.FillRectangle(new SolidBrush(Color.FromArgb(255 * Math.Min(HarvestedResources.Get<Wood>(), 100) / 100, Color.Brown)), x, y + height/2, width, height/2);
+      graphics.FillRectangle(new SolidBrush(Color.FromArgb(255 * Math.Min(HarvestedResources.Get<Wood>(), 1000) / 1000, Color.Brown)), x, y + height/2, width, height/2);
       graphics.FillRectangle(new SolidBrush(Color.FromArgb(255 * Math.Min(NaturalResources.Get<Wood>(), 100) / 100, Color.Green)), x, y, width, height/2);
     }
 

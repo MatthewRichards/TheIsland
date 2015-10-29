@@ -9,8 +9,6 @@ namespace Island.Actors
   {
     protected static readonly Random Random = new Random();
 
-    public abstract Behaviour GetInitialBehaviour();
-
     public abstract void Draw(Graphics graphics, float x, float y, float width, float height);
   }
 }

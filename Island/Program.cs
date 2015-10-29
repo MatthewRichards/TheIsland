@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Island.Actors;
 using Island.Landscapes;
 using Island.Models;
+using Island.Scripts;
 
 namespace Island
 {
@@ -64,7 +65,12 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
         }
       }
 
-      content.Add(new ActorWithLocationAndBehaviour(new Person(), new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2)));
+      var person = new Person();
+      var personLocation = new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2);
+      content.Add(new ActorWithLocationAndBehaviour(
+        person, 
+        personLocation,
+        new PersonScript(person, personLocation).CollectWood()));
       
       return new World(landscape, content);
     }

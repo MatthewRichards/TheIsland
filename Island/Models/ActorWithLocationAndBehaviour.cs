@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using Island.Actors;
 using Island.Behaviours;
+using Island.Scripts;
 
 namespace Island.Models
 {
@@ -10,19 +11,17 @@ namespace Island.Models
     private Location location;
     private Behaviour behaviour;
 
-    public ActorWithLocationAndBehaviour(Actor actor, Location location)
+    public ActorWithLocationAndBehaviour(Actor actor, Location location, Behaviour behaviour)
     {
       this.actor = actor;
       this.location = location;
-      behaviour = actor.GetInitialBehaviour();
+      this.behaviour = behaviour;
     }
 
     public void Behave(World state)
     {
       var worldView = new WorldView(state, location);
-      var nowAndNext = behaviour.Invoke(worldView);
-      nowAndNext.Item1.Act(actor, worldView);
-      behaviour = nowAndNext.Item2;
+      behaviour = behaviour.Invoke(actor, worldView);
       location = worldView.Location;
     }
 

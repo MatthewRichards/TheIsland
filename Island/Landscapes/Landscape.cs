@@ -34,9 +34,24 @@ namespace Island.Landscapes
       return HarvestedResources.Add<TResource>(harvestedAmount);
     }
 
+    public int CanHarvest<TResource>() where TResource : Resource
+    {
+      return NaturalResources.Get<TResource>();
+    }
+
     public int Collect<TResource>(int requestedAmount) where TResource : Resource
     {
       return HarvestedResources.Subtract<TResource>(requestedAmount);
+    }
+
+    public int CanCollect<TResource>() where TResource : Resource
+    {
+      return HarvestedResources.Get<TResource>();
+    }
+
+    public void DropOff<TResource>(int amount) where TResource : Resource
+    {
+      HarvestedResources.Add<TResource>(amount);
     }
   }
 }

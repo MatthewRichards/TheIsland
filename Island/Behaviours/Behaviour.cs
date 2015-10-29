@@ -1,26 +1,21 @@
 ﻿using System;
-using Island.Activities;
+using Island.Actors;
 using Island.Models;
 
 namespace Island.Behaviours
 {
   public class Behaviour
   {
-    private readonly Func<WorldView, Tuple<Activity, Behaviour>> behaviour;
+    private readonly Func<WorldView, Behaviour> behaviour;
 
-    public Behaviour(Func<WorldView, Tuple<Activity, Behaviour>> behaviour)
+    public Behaviour(Func<WorldView, Behaviour> behaviour)
     {
       this.behaviour = behaviour;
     }
 
-    public Tuple<Activity, Behaviour> Invoke(WorldView state)
+    public Behaviour Invoke(Actor actor, WorldView state)
     {
       return behaviour(state);
-    }
-
-    public static implicit operator Behaviour(Func<WorldView, Tuple<Activity, Behaviour>> behaviour)
-    {
-      return new Behaviour(behaviour);
     }
   }
 }

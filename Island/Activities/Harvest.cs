@@ -9,9 +9,6 @@ namespace Island.Activities
     public override void Act(Actor actor, WorldView state)
     {
       state.Harvest<TResource>();
-      int capacity = ((Person)actor).CanCarry<TResource>();
-      int amountCollected = state.Collect<TResource>(capacity);
-      ((Person) actor).Add<TResource>(amountCollected);
     }
   }
 }

@@ -63,9 +63,24 @@ namespace Island.Models
       return landscape[location.X, location.Y].Harvest<TResource>(harvestAmount);
     }
 
+    public int CanHarvest<TResource>(Location location) where TResource : Resource
+    {
+      return landscape[location.X, location.Y].CanHarvest<TResource>();
+    }
+
     public int Collect<TResource>(Location location, int collectAmount) where TResource : Resource
     {
       return landscape[location.X, location.Y].Collect<TResource>(collectAmount);
+    }
+
+    public int CanCollect<TResource>(Location location) where TResource : Resource
+    {
+      return landscape[location.X, location.Y].CanCollect<TResource>();
+    }
+
+    public void DropOff<TResource>(Location location, int amount) where TResource : Resource
+    {
+      landscape[location.X, location.Y].DropOff<TResource>(amount);
     }
   }
 }

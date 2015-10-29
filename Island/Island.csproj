@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\Collect.cs" />
     <Compile Include="Activities\Harvest.cs" />
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Landscapes\Mountain.cs" />
@@ -56,9 +57,6 @@
     <Compile Include="Landscapes\Water.cs" />
     <Compile Include="Activities\Activity.cs" />
     <Compile Include="Behaviours\Behaviour.cs" />
-    <Compile Include="Activities\CustomActivity.cs" />
-    <Compile Include="Behaviours\Delay.cs" />
-    <Compile Include="Behaviours\Do.cs" />
     <Compile Include="Activities\Move.cs" />
     <Compile Include="Island.cs">
       <SubType>Form</SubType>
@@ -76,6 +74,7 @@
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\ResourceStore.cs" />
     <Compile Include="Resources\Wood.cs" />
+    <Compile Include="Scripts\PersonScript.cs" />
     <EmbeddedResource Include="Island.resx">
       <DependentUpon>Island.cs</DependentUpon>
     </EmbeddedResource>
