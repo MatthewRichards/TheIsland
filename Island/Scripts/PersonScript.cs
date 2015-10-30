@@ -23,13 +23,6 @@ namespace Island.Scripts
 
     public Tuple<Activity, Behaviour> CollectWood(WorldView state)
     {
-      if (lastWoodSource != null && lastWoodSource != state.Location)
-      {
-        return Move.Towards(lastWoodSource).Then(CollectWood);
-      }
-
-      lastWoodSource = null;
-
       if (state.Location != home && state.CanCollect<Wood>() > 0)
       {
         lastWoodSource = state.Location;
@@ -41,6 +34,12 @@ namespace Island.Scripts
         return Do.Harvest<Wood>().Then(CollectWood);
       }
 
+      if (lastWoodSource != null && lastWoodSource != state.Location)
+      {
+        return Move.Towards(lastWoodSource).Then(CollectWood);
+      }
+
+      lastWoodSource = null;
       return FindWood(state);
     }
 
