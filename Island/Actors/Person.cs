@@ -11,10 +11,11 @@ namespace Island.Actors
   public class Person : Actor
   {
     private readonly ResourceStore resources = new ResourceStore(100);
+    private static readonly Bitmap PersonImage = Properties.Resources.Person;
 
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
-      graphics.FillEllipse(SemiTransparentBrushes.GetBrush(Color.Black, (Math.Min(resources.Get<Wood>(), 80) + 20) / 100f), x + width/4, y + height/4, width/2, height/2);
+      graphics.DrawImage(PersonImage, x + (width-PersonImage.Width)/2, y + (height-PersonImage.Height)/2);
     }
     
     public int PickUp<TResource>(int amount) where TResource : Resource

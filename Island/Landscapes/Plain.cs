@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Drawing;
 using Island.Actors;
 using Island.Drawing;
@@ -9,6 +10,9 @@ namespace Island.Landscapes
 {
   public class Plain : Landscape
   {
+    private static readonly Bitmap TreeImage = Properties.Resources.Tree;
+    private static readonly Bitmap LogImage = Properties.Resources.Log;
+
     public Plain() : base(Brushes.Bisque)
     {
       if (Random.Next(0, 3) == 0)
@@ -27,8 +31,23 @@ namespace Island.Landscapes
 
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
-      graphics.FillRectangle(SemiTransparentBrushes.GetBrush(Color.Brown, Math.Min(HarvestedResources.Get<Wood>(), 1000) / 1000f), x, y + height/2, width, height/2);
-      graphics.FillRectangle(SemiTransparentBrushes.GetBrush(Color.Green, Math.Min(NaturalResources.Get<Wood>(), 100) / 100f), x, y, width, height/2);
+      int logs = HarvestedResources.Get<Wood>();
+
+      if (logs > 0)
+      {
+        graphics.DrawImage(LogImage, x, y + height - LogImage.Height);
+        graphics.DrawString($"x{logs}",
+          SystemFonts.SmallCaptionFont, Brushes.Brown,
+          x + LogImage.Width, y + height - LogImage.Height);
+      }
+
+      int trees = (int)Math.Ceiling(5*NaturalResources.Get<Wood>()/100f);
+
+      if (trees >= 1) graphics.DrawImage(TreeImage, x + (width - TreeImage.Width) / 2, y + (height - TreeImage.Height) / 2);
+      if (trees >= 2) graphics.DrawImage(TreeImage, x, y);
+      if (trees >= 3) graphics.DrawImage(TreeImage, x + width - TreeImage.Width, y + height - TreeImage.Height);
+      if (trees >= 4) graphics.DrawImage(TreeImage, x + width - TreeImage.Width, y);
+      if (trees >= 5) graphics.DrawImage(TreeImage, x, y + height - TreeImage.Height);
     }
 
     public override bool IsAccessibleTo(Actor actor)
