@@ -11,6 +11,7 @@ namespace Island.Scripts
   {
     private readonly Person me;
     private readonly Location home;
+    private Location lastWoodSource;
 
     private static readonly Random Random = new Random();
 
@@ -20,45 +21,45 @@ namespace Island.Scripts
       this.home = home;
     }
 
-    public Behaviour CollectWood()
+    public Tuple<Activity, Behaviour> CollectWood(WorldView state)
     {
-      return new Behaviour(state =>
+      if (lastWoodSource != null && lastWoodSource != state.Location)
       {
-        Move.By(Random.Next(-1, 2), Random.Next(-1, 2)).Act(me, state);
-        return new Behaviour(FindWood);
-      });
-    }
+        return Move.Towards(lastWoodSource).Then(CollectWood);
+      }
 
-    private Behaviour FindWood(WorldView state)
-    {
-      if (state.CanCollect<Wood>() > 0)
+      lastWoodSource = null;
+
+      if (state.Location != home && state.CanCollect<Wood>() > 0)
       {
-        new Collect<Wood>().Act(me, state);
-        return new Behaviour(ReturnHome);
+        lastWoodSource = state.Location;
+        return Do.Collect<Wood>().Then(ReturnHome);
       }
 
       if (state.CanHarvest<Wood>() > 0)
       {
-        new Harvest<Wood>().Act(me, state);
-        return new Behaviour(FindWood);
+        return Do.Harvest<Wood>().Then(CollectWood);
       }
 
-      return CollectWood();
+      return FindWood(state);
     }
 
-    private Behaviour ReturnHome(WorldView state)
+    private Tuple<Activity, Behaviour> FindWood(WorldView state)
+    {
+      return Tuple.Create((Activity)Move.By(Random.Next(-1, 2), Random.Next(-1, 2)), new Behaviour(CollectWood));
+    }
+
+    private Tuple<Activity, Behaviour> ReturnHome(WorldView state)
     {
       int dx = state.Location.X < home.X ? 1 : (state.Location.X > home.X ? -1 : 0);
       int dy = state.Location.Y < home.Y ? 1 : (state.Location.Y > home.Y ? -1 : 0);
 
       if (dx == 0 && dy == 0)
       {
-        state.DropOff<Wood>(me.Carrying<Wood>());
-        return new Behaviour(_ => CollectWood());
+        return Do.DropOff<Wood>(me.Carrying<Wood>()).Then(CollectWood);
       }
 
-      Move.By(dx, dy).Act(me, state);
-      return new Behaviour(ReturnHome);
+      return Move.By(dx, dy).Then(ReturnHome);
     }
   }
 }

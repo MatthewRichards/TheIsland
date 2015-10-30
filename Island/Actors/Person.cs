@@ -16,7 +16,7 @@ namespace Island.Actors
       graphics.FillEllipse(new SolidBrush(Color.FromArgb(255 * (Math.Min(resources.Get<Wood>(), 80) + 20) / 100, Color.Black)), x + width/4, y + height/4, width/2, height/2);
     }
     
-    public int Add<TResource>(int amount) where TResource : Resource
+    public int PickUp<TResource>(int amount) where TResource : Resource
     {
       return resources.Add<TResource>(amount);
     }
@@ -29,6 +29,11 @@ namespace Island.Actors
     public int Carrying<TResource>() where TResource : Resource
     {
       return resources.Get<TResource>();
+    }
+
+    public int Drop<TResource>(int amount) where TResource : Resource
+    {
+      return resources.Subtract<TResource>(amount);
     }
   }
 }

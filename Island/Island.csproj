@@ -46,8 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\Collect.cs" />
-    <Compile Include="Activities\Harvest.cs" />
+    <Compile Include="Activities\Do.cs" />
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Landscapes\Mountain.cs" />
     <Compile Include="Landscapes\Plain.cs" />

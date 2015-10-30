@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Island.Actors;
+using Island.Behaviours;
 using Island.Landscapes;
 using Island.Models;
 using Island.Scripts;
@@ -70,7 +71,7 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
       content.Add(new ActorWithLocationAndBehaviour(
         person, 
         personLocation,
-        new PersonScript(person, personLocation).CollectWood()));
+        new Behaviour(new PersonScript(person, personLocation).CollectWood)));
       
       return new World(landscape, content);
     }

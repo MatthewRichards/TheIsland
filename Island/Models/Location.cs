@@ -25,6 +25,16 @@
       return Equals((Location) obj);
     }
 
+    public static bool operator ==(Location left, Location right)
+    {
+      return Equals(left, right);
+    }
+
+    public static bool operator !=(Location left, Location right)
+    {
+      return !Equals(left, right);
+    }
+
     public override int GetHashCode()
     {
       unchecked
