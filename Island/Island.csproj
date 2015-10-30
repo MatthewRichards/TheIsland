@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Activities\Do.cs" />
     <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Drawing\SemiTransparentBrushes.cs" />
     <Compile Include="Landscapes\Mountain.cs" />
     <Compile Include="Landscapes\Plain.cs" />
     <Compile Include="Landscapes\Landscape.cs" />

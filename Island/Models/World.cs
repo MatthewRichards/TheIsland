@@ -23,10 +23,8 @@ namespace Island.Models
 
     internal void Draw(Graphics graphics, Size imageSize)
     {
-      // ReSharper disable PossibleLossOfFraction
-      float cellWidth = imageSize.Width/landscape.GetLength(0);
-      float cellHeight = imageSize.Height/landscape.GetLength(1);
-      // ReSharper enable PossibleLossOfFraction
+      float cellWidth = (float)imageSize.Width/landscape.GetLength(0);
+      float cellHeight = (float)imageSize.Height/landscape.GetLength(1);
 
       for (int i = 0; i < landscape.GetLength(0); i++)
       {

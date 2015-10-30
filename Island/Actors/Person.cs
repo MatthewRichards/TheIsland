@@ -2,6 +2,7 @@
 using System.Drawing;
 using Island.Activities;
 using Island.Behaviours;
+using Island.Drawing;
 using Island.Models;
 using Island.Resources;
 
@@ -13,7 +14,7 @@ namespace Island.Actors
 
     public override void Draw(Graphics graphics, float x, float y, float width, float height)
     {
-      graphics.FillEllipse(new SolidBrush(Color.FromArgb(255 * (Math.Min(resources.Get<Wood>(), 80) + 20) / 100, Color.Black)), x + width/4, y + height/4, width/2, height/2);
+      graphics.FillEllipse(SemiTransparentBrushes.GetBrush(Color.Black, (Math.Min(resources.Get<Wood>(), 80) + 20) / 100f), x + width/4, y + height/4, width/2, height/2);
     }
     
     public int PickUp<TResource>(int amount) where TResource : Resource

@@ -6,7 +6,7 @@ namespace Island.Landscapes
 {
   public class Mountain : Landscape
   {
-    public Mountain() : base(Color.Chocolate)
+    public Mountain() : base(Brushes.Chocolate)
     {
     }
 

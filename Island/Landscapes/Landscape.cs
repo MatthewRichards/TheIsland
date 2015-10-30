@@ -12,18 +12,18 @@ namespace Island.Landscapes
     protected static readonly Random Random = new Random();
     protected readonly ResourceStore NaturalResources = new ResourceStore();
     protected readonly ResourceStore HarvestedResources = new ResourceStore();
-    private readonly Color colour;
+    private readonly Brush brush;
 
-    protected Landscape(Color colour)
+    protected Landscape(Brush brush)
     {
-      this.colour = colour;
+      this.brush = brush;
     }
 
     public abstract void ReplenishResources();
 
     public virtual void Draw(Graphics graphics, float x, float y, float width, float height)
     {
-      graphics.FillRectangle(new SolidBrush(colour), x, y, width, height);
+      graphics.FillRectangle(brush, x, y, width, height);
     }
 
     public abstract bool IsAccessibleTo(Actor actor);

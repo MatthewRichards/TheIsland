@@ -6,7 +6,7 @@ namespace Island.Landscapes
 {
   public class Water : Landscape
   {
-    public Water() : base(Color.Aqua)
+    public Water() : base(Brushes.Aqua)
     {
     }
 
