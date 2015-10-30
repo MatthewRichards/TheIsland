@@ -33,13 +33,6 @@ namespace Island.Activities
 
     public override void Act(Actor actor, WorldView world)
     {
-      Mover mover = actor as Mover;
-
-      if (mover == null)
-      {
-        throw new Exception("Cannot move a " + actor.GetType());
-      }
-
       if (destination != null)
       {
         dx = world.Location.X < destination.X ? 1 : world.Location.X > destination.X ? -1 : 0;

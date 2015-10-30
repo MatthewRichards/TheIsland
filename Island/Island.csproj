@@ -51,7 +51,6 @@
     <Compile Include="Landscapes\Mountain.cs" />
     <Compile Include="Landscapes\Plain.cs" />
     <Compile Include="Landscapes\Landscape.cs" />
-    <Compile Include="Actors\Mover.cs" />
     <Compile Include="Actors\Person.cs" />
     <Compile Include="Landscapes\Water.cs" />
     <Compile Include="Activities\Activity.cs" />

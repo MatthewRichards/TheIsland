@@ -7,7 +7,7 @@ using Island.Resources;
 
 namespace Island.Actors
 {
-  public class Person : Mover
+  public class Person : Actor
   {
     private readonly ResourceStore resources = new ResourceStore(100);
 
