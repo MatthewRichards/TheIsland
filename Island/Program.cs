@@ -66,12 +66,19 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW";
         }
       }
 
-      var person = new Person();
-      var personLocation = new Location(landscape.GetLength(0)/2, landscape.GetLength(1)/2);
+      var firstPerson = new Person();
+      var firstPersonLocation = new Location(landscape.GetLength(0)*2/5, landscape.GetLength(1)/2);
       content.Add(new ActorWithLocationAndBehaviour(
-        person, 
-        personLocation,
-        new Behaviour(new PersonScript(person, personLocation).CollectWood)));
+        firstPerson,
+        firstPersonLocation,
+        new Behaviour(new PersonScript(firstPerson, firstPersonLocation).CollectWood)));
+
+      var secondPerson = new Person();
+      var secondPersonLocation = new Location(landscape.GetLength(0) *3/5, landscape.GetLength(1) / 2);
+      content.Add(new ActorWithLocationAndBehaviour(
+        secondPerson,
+        secondPersonLocation,
+        new Behaviour(new PersonScript(secondPerson, secondPersonLocation).CollectWood)));
       
       return new World(landscape, content);
     }

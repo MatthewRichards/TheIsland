@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using Island.Actors;
-using Island.Behaviours;
 using Island.Landscapes;
 using Island.Resources;
 

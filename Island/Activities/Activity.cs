@@ -2,6 +2,7 @@
 using Island.Actors;
 using Island.Behaviours;
 using Island.Models;
+using Action = Island.Behaviours.Action;
 
 namespace Island.Activities
 {
@@ -9,12 +10,12 @@ namespace Island.Activities
   {
     public abstract void Act(Actor actor, WorldView state);
 
-    public Tuple<Activity, Behaviour> Then(Behaviour next)
+    public Action Then(Behaviour next)
     {
-      return Tuple.Create(this, next);
+      return new Action(this, next);
     }
 
-    public Tuple<Activity, Behaviour> Then(Func<WorldView, Tuple<Activity, Behaviour>> next)
+    public Action Then(Func<WorldView, Action> next)
     {
       return Then(new Behaviour(next));
     }

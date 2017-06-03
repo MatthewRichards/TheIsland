@@ -1,9 +1,9 @@
 ﻿using System;
 using Island.Activities;
 using Island.Actors;
-using Island.Behaviours;
 using Island.Models;
 using Island.Resources;
+using Action = Island.Behaviours.Action;
 
 namespace Island.Scripts
 {
@@ -21,7 +21,7 @@ namespace Island.Scripts
       this.home = home;
     }
 
-    public Tuple<Activity, Behaviour> CollectWood(WorldView state)
+    public Action CollectWood(WorldView state)
     {
       if (state.Location != home && state.CanCollect<Wood>() > 0)
       {
@@ -43,22 +43,21 @@ namespace Island.Scripts
       return FindWood(state);
     }
 
-    private Tuple<Activity, Behaviour> FindWood(WorldView state)
+    private Action FindWood(WorldView state)
     {
-      return Tuple.Create((Activity)Move.By(Random.Next(-1, 2), Random.Next(-1, 2)), new Behaviour(CollectWood));
+      return Move
+        .By(Random.Next(-1, 2), Random.Next(-1, 2))
+        .Then(CollectWood);
     }
 
-    private Tuple<Activity, Behaviour> ReturnHome(WorldView state)
+    private Action ReturnHome(WorldView state)
     {
-      int dx = state.Location.X < home.X ? 1 : (state.Location.X > home.X ? -1 : 0);
-      int dy = state.Location.Y < home.Y ? 1 : (state.Location.Y > home.Y ? -1 : 0);
-
-      if (dx == 0 && dy == 0)
+      if (state.Location == home)
       {
         return Do.DropOff<Wood>(me.Carrying<Wood>()).Then(CollectWood);
       }
 
-      return Move.By(dx, dy).Then(ReturnHome);
+      return Move.Towards(home).Then(ReturnHome);
     }
   }
 }

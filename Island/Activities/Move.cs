@@ -1,5 +1,4 @@
-﻿using System;
-using Island.Actors;
+﻿using Island.Actors;
 using Island.Models;
 
 namespace Island.Activities

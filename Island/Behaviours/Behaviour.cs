@@ -1,5 +1,4 @@
 ﻿using System;
-using Island.Activities;
 using Island.Actors;
 using Island.Models;
 
@@ -7,9 +6,9 @@ namespace Island.Behaviours
 {
   public class Behaviour
   {
-    private readonly Func<WorldView, Tuple<Activity, Behaviour>> behaviour;
+    private readonly Func<WorldView, Action> behaviour;
 
-    public Behaviour(Func<WorldView, Tuple<Activity, Behaviour>> behaviour)
+    public Behaviour(Func<WorldView, Action> behaviour)
     {
       this.behaviour = behaviour;
     }
@@ -17,8 +16,7 @@ namespace Island.Behaviours
     public Behaviour Invoke(Actor actor, WorldView state)
     {
       var result = behaviour(state);
-      result.Item1.Act(actor, state);
-      return result.Item2;
+      return result.Act(actor, state);
     }
   }
 }

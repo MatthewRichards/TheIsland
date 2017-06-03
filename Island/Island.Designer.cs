@@ -48,6 +48,7 @@
       // Clock
       // 
       this.Clock.Enabled = true;
+      this.Clock.Interval = 50;
       this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
       // 
       // TimeLabel
